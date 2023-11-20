@@ -1,5 +1,5 @@
 openai
 gradio
 pygame
-dotenv
+python-dotenv
 gtts
