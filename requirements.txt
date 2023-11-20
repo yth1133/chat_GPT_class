@@ -1,0 +1,5 @@
+openai
+gradio
+pygame
+dotenv
+gtts
