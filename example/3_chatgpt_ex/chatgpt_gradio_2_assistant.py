@@ -2,7 +2,8 @@ import gradio as gr
 from openai import OpenAI
 import os
 from dotenv import load_dotenv
-dotenv_path = "/home/yth1133/chatgpt_gradio/.env"
+current_dir = os.path.dirname(os.path.abspath(__file__)) # 실행하려는 파일의 경로
+dotenv_path = os.path.join(current_dir, '../../', '.env') # 실행파일 두개상위 경로의 env 파일
 load_dotenv(dotenv_path)
 open_api_key = os.getenv("TEST_KEY")
 client = OpenAI(api_key=open_api_key)

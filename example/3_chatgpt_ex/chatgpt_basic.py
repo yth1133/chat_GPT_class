@@ -1,11 +1,13 @@
 from openai import OpenAI
 import os
 from dotenv import load_dotenv
-dotenv_path = "/home/yth1133/chatgpt_gradio/.env"
+import sys
+
+current_dir = os.path.dirname(os.path.abspath(__file__)) # 실행하려는 파일의 경로
+dotenv_path = os.path.join(current_dir, '../../', '.env') # 실행파일 두개상위 경로의 env 파일
 load_dotenv(dotenv_path)
 
 # .env 파일에 API 키가 저장되어 있는 경우 가져오기
-# open_api_key = os.getenv("OPEN_API_KEY")
 open_api_key = os.getenv("TEST_KEY")
 
 # 만약 .env 파일에 API 키가 없는 경우 사용자에게 입력 받기 또는 다른 방법으로 획득하기
