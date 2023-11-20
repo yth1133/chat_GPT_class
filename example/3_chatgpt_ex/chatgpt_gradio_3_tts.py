@@ -4,7 +4,8 @@ import os
 from dotenv import load_dotenv
 from gtts import gTTS
 import pygame
-load_dotenv()
+dotenv_path = "/home/yth1133/chatgpt_gradio/.env"
+load_dotenv(dotenv_path)
 open_api_key = os.getenv("TEST_KEY")
 client = OpenAI(api_key=open_api_key)
 

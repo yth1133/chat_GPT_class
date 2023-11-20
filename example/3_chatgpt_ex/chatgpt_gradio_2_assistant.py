@@ -2,7 +2,8 @@ import gradio as gr
 from openai import OpenAI
 import os
 from dotenv import load_dotenv
-load_dotenv()
+dotenv_path = "/home/yth1133/chatgpt_gradio/.env"
+load_dotenv(dotenv_path)
 open_api_key = os.getenv("TEST_KEY")
 client = OpenAI(api_key=open_api_key)
 
@@ -15,12 +16,12 @@ def response(message, history):
         assistant_msg = {"role": "assistant", "content": history[-1][-1]} # 이전 대화 내용 history 에 있는 내용 가져오기
         message_history.append(assistant_msg)   # 이전 gpt응답 내용 assistant 로 추가
     message_history.append(tmp_msg)     # 새롭게 질문할 내용
-
+    print("질문내용입니다: ", message)
     response = client.chat.completions.create(
         model = "gpt-3.5-turbo", # 사용할 모델명 입력,\
         messages = message_history)
     chatgpt_res = response.choices[0].message.content
-    
+    print("답변입니다: ", chatgpt_res)
     return chatgpt_res
 
 gr.ChatInterface(
@@ -33,4 +34,4 @@ gr.ChatInterface(
         retry_btn="다시보내기 ↩",
         undo_btn="이전챗 삭제 ❌",
         clear_btn="전챗 삭제 💫",
-).launch()
+).launch(share=True)

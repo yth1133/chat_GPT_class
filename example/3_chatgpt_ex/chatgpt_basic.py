@@ -1,7 +1,8 @@
 from openai import OpenAI
 import os
 from dotenv import load_dotenv
-load_dotenv()
+dotenv_path = "/home/yth1133/chatgpt_gradio/.env"
+load_dotenv(dotenv_path)
 
 # .env 파일에 API 키가 저장되어 있는 경우 가져오기
 # open_api_key = os.getenv("OPEN_API_KEY")
@@ -17,9 +18,8 @@ with open(".env", "w") as env_file:
     env_file.write(f"OPEN_API_KEY={open_api_key}\n")
 
 #open_api_key 변수에는 API 키가 저장 확인
-print("API 키:", open_api_key)
+print("API 키:", "정상입니다")
 
-########### gradio 구현 ###########
 client = OpenAI(api_key=open_api_key)
 
 # 기본익히기

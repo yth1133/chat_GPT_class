@@ -2,7 +2,8 @@ import gradio as gr
 from openai import OpenAI
 import os
 from dotenv import load_dotenv
-load_dotenv()
+dotenv_path = "/home/yth1133/chatgpt_gradio/.env"
+load_dotenv(dotenv_path)
 open_api_key = os.getenv("TEST_KEY")
 client = OpenAI(api_key=open_api_key)
 
@@ -17,8 +18,6 @@ def response(message, history):
         messages = message_)
     chatgpt_res = response.choices[0].message.content
     
-    ## 이전대화 내용포함해서 assistant 로 구현 코드
-
     return chatgpt_res
 
 gr.ChatInterface(
